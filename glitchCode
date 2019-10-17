@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VR Version 2</title>
+    <meta name="description" content="TeachMe" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src=" https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/Utopiah/googlepoly-load-component/master/googlepoly-load-component.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="gatorguy-gltf"
+          src="https://qdevries.github.io/GatorGuy/GatorGuy.gltf"
+        ></a-asset-item>
+        <!--https://poly.google.com/view/co0GcNmVyos-->
+        <a-asset-item
+          id="screen-gltf"
+          src="https://qdevries.github.io/Screen/model.gltf"
+        ></a-asset-item>
+        <!--https://poly.google.com/view/0t3ueKsFbAl-->
+        <a-asset-item
+          id="table-gltf"
+          src="https://qdevries.github.io/Table/Table_Large_Rectangular_01.gltf"
+        ></a-asset-item>
+        <!--https://poly.google.com/view/8cnrwlAWqx7-->
+        <a-asset-item
+          id="teacher-gltf"
+          src="https://qdevries.github.io/Teacher/person three.gltf"
+        ></a-asset-item>
+        <!--https://poly.google.com/view/eFc_1bydKO_-->
+
+        <a-asset-item
+          id="books-gltf"
+          src="https://qdevries.github.io/Books/Books_01.gltf"
+        ></a-asset-item>
+        <!--https://poly.google.com/view/aXBH7oyJBu_-->
+      </a-assets>
+
+      <a-asset-item
+        id="switch-gltf"
+        src="https://qdevries.github.io/switch/model.gltf"
+      ></a-asset-item>
+      <!--https://poly.google.com/view/1xBl-8de6b0-->
+
+      <a-asset-item
+        id="pen-gltf"
+        src="https://qdevries.github.io/Pen/model.gltf"
+      ></a-asset-item>
+
+      qdevries.github.io/Pen/person three.gltf
+
+      <!--Room-->
+      <a-plane
+        id="floor"
+        position="0 0 -1"
+        rotation="-90 0 0"
+        width="30"
+        height="50"
+        color="#999"
+        src="https://qdevries.github.io/officeCarpet.jpg
+"
+        scale=""
+        visible=""
+        material=""
+        geometry=""
+      ></a-plane>
+      <a-plane
+        id="back wall"
+        position="0 7 -26"
+        rotation="0 0 0"
+        width="50"
+        height="15"
+        color="#f5ebd0"
+        scale=""
+        visible=""
+        material=""
+        geometry=""
+      ></a-plane>
+      <a-plane
+        id="left wall"
+        position="-15 7 -1"
+        rotation="0 90 0"
+        width="50"
+        height="15"
+        color="#f5ebd0"
+        scale=""
+        visible=""
+        material=""
+        geometry=""
+      ></a-plane>
+      <a-plane
+        id="right wall"
+        position="15 7 -1"
+        rotation="0 -90 0"
+        width="50"
+        height="15"
+        color="#f5ebd0"
+        scale=""
+        visible=""
+        material=""
+        geometry=""
+      ></a-plane>
+
+      <!--background-->
+      <a-sky
+        src="https://cdn.glitch.com/27ba1d28-f16d-47d0-9a4a-66e5042ffd48%2Fmilkyway.jpg?v=1571186379107"
+      ></a-sky>
+
+      <!--positioning of assets-->
+      <a-entity
+        gltf-model="#gatorguy-gltf"
+        position="3 0 -9"
+        rotation="-95 45 0"
+        scale="0.02 0.02 0.02"
+        event-set__mouseup="scale: .02 .02 .02"
+        event-set__mousedown="scale: .03 .03 .03"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#screen-gltf"
+        position="-2 -16 -10"
+        rotation="0 15 0"
+        scale="10 10 10"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#table-gltf"
+        position=" 0 0 -2"
+        rotation="0 90 0"
+        scale=".1 .1 .1"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#teacher-gltf"
+        position=" -4 1.75 -12"
+        rotation="0 -45 0"
+        scale=".55 .55 .55"
+        event-set__enter="_event: mouseenter; _target: #teacher-gltf; visible: true"
+        event-set__leave="_event: mouseleave; _target: #teacher-gltf; visible: false"
+      >
+        <a-text
+          id="#teacher-gltf"
+          value="today we learn"
+          align="center"
+          color="#white"
+          visible="false"
+          position="-3 1.5 -11"
+          geometry="primitive: plane; width: 10"
+          material="color: #333"
+        ></a-text>
+      </a-entity>
+
+      <a-entity
+        gltf-model="#books-gltf"
+        position="0 .85 -1.75"
+        rotation="0 0 0"
+        scale=".02 .02 .02"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#switch-gltf"
+        position="7 .3 -12"
+        rotation="0 -350 0"
+        scale="4 4 4"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#pen-gltf"
+        position="-.5 .85 -.5"
+        rotation="-80 0 0"
+        scale="1 1 1"
+        event-set__enter="_event: mouseenter; rotation: 0 0 0"
+        event-set__leave="_event: mouseleave; rotation: -80 0 0"
+      ></a-entity>
+      <!--lighting
+      <a-entity light="type: ambient; color: #fffff"></a-entity>-->
+
+      <a-light type="point" color="white" position="-2 6 0"></a-light>
+
+      <!--sound-->
+
+      <!--camera-->
+      <a-entity cursor position="0 1 -1.5"></a-entity>
+      <a-camera position="0 1.5 0">
+        <a-cursor color="blue"></a-cursor>
+      </a-camera>
+
+      <a-entity camera look-controls position="0 1.6 0"></a-entity>
+    </a-scene>
+  </body>
+</html>
